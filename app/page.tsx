@@ -17,6 +17,8 @@ import {
   CheckCircle,
 } from "lucide-react";
 
+/* ================= DATA ================= */
+
 const roles = [
   {
     id: "receptionist",
@@ -80,44 +82,50 @@ const features = [
   "Advanced reporting suite",
 ];
 
+/* ================= COMPONENT ================= */
+
 export default function HomePage() {
   const [activeRole, setActiveRole] = useState<string | null>(null);
 
   return (
     <div className="min-h-screen bg-midnight relative overflow-hidden">
-      {/* Background effects */}
+
+      {/* ================= BACKGROUND ================= */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-0 w-64 h-64 bg-amber-500/3 rounded-full blur-3xl" />
-        {/* Grid pattern */}
+        <div className="absolute top-0 left-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-teal-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 sm:w-80 h-64 sm:h-80 bg-blue-500/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-0 w-56 sm:w-64 h-56 sm:h-64 bg-amber-500/3 rounded-full blur-3xl" />
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: `linear-gradient(rgba(20,184,166,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(20,184,166,0.5) 1px, transparent 1px)`,
+            backgroundImage:
+              "linear-gradient(rgba(20,184,166,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(20,184,166,0.5) 1px, transparent 1px)",
             backgroundSize: "60px 60px",
           }}
         />
       </div>
 
-      {/* Navigation */}
+      {/* ================= NAVIGATION ================= */}
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative z-10 flex items-center justify-between px-8 py-5 border-b border-border/50"
+        className="relative z-10 flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4"
       >
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center shadow-lg shadow-teal-500/30">
-            <Heart className="w-5 h-5 text-white" />
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center shadow-lg shadow-teal-500/30">
+            <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </div>
-          <div>
-            <p className="font-serif text-xl font-bold text-slate-100">MediCore</p>
-            <p className="text-[9px] text-teal-500/70 tracking-[0.3em] uppercase -mt-0.5">Hospital Management</p>
+          <div className="leading-tight">
+            <p className="font-serif text-lg sm:text-xl font-bold text-slate-100">
+              MediCore
+            </p>
+            <p className="text-[9px] text-teal-500/70 tracking-[0.3em] uppercase">
+              Hospital Management
+            </p>
           </div>
         </div>
 
-        {/* Nav links */}
         <div className="hidden md:flex items-center gap-1 bg-surface/50 border border-border rounded-2xl p-1">
           {["Home", "Receptionist", "Nurse", "Doctor", "Admin"].map((item) => (
             <Link
@@ -138,15 +146,16 @@ export default function HomePage() {
         </Link>
       </motion.nav>
 
-      {/* Hero Section */}
-      <section className="relative z-10 px-8 pt-20 pb-16 max-w-7xl mx-auto">
+      {/* ================= HERO ================= */}
+      <section className="relative z-10 px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-16 max-w-7xl mx-auto">
         <div className="text-center">
+
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 bg-teal-500/10 border border-teal-500/20 rounded-full text-teal-400 text-sm font-medium mb-8"
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-teal-500/10 border border-teal-500/20 rounded-full text-teal-400 text-xs sm:text-sm font-medium mb-8"
           >
             <span className="w-2 h-2 rounded-full bg-teal-400 pulse-dot" />
             Next-Generation Hospital Management Platform
@@ -156,129 +165,106 @@ export default function HomePage() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="font-serif text-6xl md:text-7xl lg:text-8xl font-bold text-slate-100 leading-[0.95] mb-6"
+            className="font-serif font-bold text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-slate-100 leading-tight mb-6"
           >
-            Healthcare{" "}
-            <span className="gradient-text">Elevated</span>
+            Healthcare <span className="gradient-text">Elevated</span>
             <br />
-            <span className="text-slate-500 text-5xl md:text-6xl font-normal italic">to Excellence</span>
+            <span className="text-slate-500 text-2xl sm:text-3xl md:text-4xl font-normal italic">
+              to Excellence
+            </span>
           </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-lg text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed"
-          >
+          <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto mb-12 sm:mb-16 leading-relaxed">
             A unified, role-based hospital management system designed for modern
             clinical workflows. Streamline operations from patient registration to
             discharge with precision and clarity.
-          </motion.p>
+          </p>
 
-          {/* CTA buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
-          >
+          {/* CTA */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <Link
               href="/admin/dashboard"
-              className="flex items-center gap-2 px-8 py-4 bg-teal-500 hover:bg-teal-400 text-white rounded-2xl font-semibold text-base transition-all shadow-xl shadow-teal-500/25 hover:shadow-teal-500/40 hover:-translate-y-0.5"
+              className="w-full sm:w-auto flex justify-center items-center gap-2 px-6 py-3 bg-teal-500 hover:bg-teal-400 text-white rounded-2xl font-semibold transition-all"
             >
               Explore Dashboard <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="#roles"
-              className="flex items-center gap-2 px-8 py-4 bg-surface border border-border hover:border-teal-500/30 text-slate-300 rounded-2xl font-medium text-base transition-all hover:-translate-y-0.5"
+              className="w-full sm:w-auto flex justify-center items-center gap-2 px-6 py-3 bg-surface border border-border text-slate-300 rounded-2xl font-medium transition-all"
             >
               Select Your Role <ChevronRight className="w-4 h-4" />
             </Link>
-          </motion.div>
+          </div>
 
-          {/* Stats row */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto"
-          >
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {stats.map((stat, i) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 + i * 0.1 }}
-                className="glass-card rounded-2xl p-5 text-center stat-glow-teal"
+                transition={{ delay: i * 0.1 }}
+                className="glass-card rounded-2xl p-4 sm:p-5 text-center"
               >
-                <div className="w-10 h-10 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center mx-auto mb-3">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center mx-auto mb-3">
                   {stat.icon}
                 </div>
-                <p className="font-serif text-2xl font-bold text-slate-100">{stat.value}</p>
-                <p className="text-xs text-slate-500 mt-1 tracking-wide">{stat.label}</p>
+                <p className="font-serif text-lg sm:text-xl font-bold text-slate-100">
+                  {stat.value}
+                </p>
+                <p className="text-xs text-slate-500 mt-1">{stat.label}</p>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Role Selection */}
-      <section id="roles" className="relative z-10 px-8 py-20 max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-12"
-        >
-          <p className="text-teal-400 text-sm font-semibold tracking-[0.2em] uppercase mb-4">Access Portal</p>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-slate-100 mb-4">
+      {/* ================= ROLES ================= */}
+      <section id="roles" className="relative z-10 px-4 sm:px-6 lg:px-8 py-16 sm:py-20 max-w-7xl mx-auto">
+
+        <div className="text-center mb-12">
+          <p className="text-teal-400 text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase mb-4">
+            Access Portal
+          </p>
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-slate-100 mb-4">
             Select Your Role
           </h2>
-          <p className="text-slate-500 max-w-xl mx-auto">
-            Each role provides a purpose-built interface tailored to your specific clinical and administrative needs.
+          <p className="text-slate-500 max-w-xl mx-auto text-sm sm:text-base">
+            Each role provides a purpose-built interface tailored to your needs.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {roles.map((role, i) => (
             <motion.div
               key={role.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ delay: i * 0.1 }}
               whileHover={{ y: -4 }}
               onHoverStart={() => setActiveRole(role.id)}
               onHoverEnd={() => setActiveRole(null)}
-              className="group"
             >
               <Link href={role.href}>
                 <div
-                  className={`
-                    relative h-full glass-card rounded-2xl p-6 border transition-all duration-300 cursor-pointer
-                    ${role.border}
-                    ${activeRole === role.id ? "shadow-xl" : ""}
-                  `}
+                  className={`relative h-full glass-card rounded-2xl p-6 border transition-all duration-300 cursor-pointer ${role.border} ${
+                    activeRole === role.id ? "shadow-xl" : ""
+                  }`}
                 >
-                  {/* Background gradient */}
-                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${role.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${role.gradient} opacity-0 hover:opacity-100 transition-opacity`} />
 
-                  <div className="relative">
-                    {/* Icon */}
-                    <div className={`w-12 h-12 rounded-xl ${role.iconBg} flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110`}>
+                  <div className="relative text-left">
+                    <div className={`w-12 h-12 rounded-xl ${role.iconBg} flex items-center justify-center mb-5`}>
                       {role.icon}
                     </div>
-
-                    {/* Label */}
-                    <h3 className="font-serif text-xl font-bold text-slate-100 mb-2">{role.label}</h3>
-                    <p className="text-sm text-slate-500 leading-relaxed mb-6">{role.description}</p>
-
-                    {/* CTA */}
-                    <div className="flex items-center gap-2 text-sm font-medium text-slate-400 group-hover:text-teal-400 transition-colors">
-                      Sign In
-                      <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                    <h3 className="font-serif text-lg font-bold text-slate-100 mb-2">
+                      {role.label}
+                    </h3>
+                    <p className="text-sm text-slate-500 mb-6">
+                      {role.description}
+                    </p>
+                    <div className="flex items-center gap-2 text-sm font-medium text-slate-400">
+                      Sign In <ArrowRight className="w-4 h-4" />
                     </div>
                   </div>
                 </div>
@@ -288,76 +274,67 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Features */}
-      <section className="relative z-10 px-8 py-20 max-w-7xl mx-auto">
-        <div className="glass-card rounded-3xl p-10 md:p-16 animated-border">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
-              <p className="text-amber-400 text-sm font-semibold tracking-[0.2em] uppercase mb-4">Platform Capabilities</p>
-              <h2 className="font-serif text-4xl font-bold text-slate-100 mb-6 leading-tight">
-                Everything your hospital needs,{" "}
+      {/* ================= FEATURES ================= */}
+      <section className="relative z-10 px-4 sm:px-6 lg:px-8 py-16 sm:py-20 max-w-7xl mx-auto">
+        <div className="glass-card rounded-3xl p-6 sm:p-10 md:p-16 animated-border">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+
+            <div className="text-center md:text-left">
+              <p className="text-amber-400 text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase mb-4">
+                Platform Capabilities
+              </p>
+              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-slate-100 mb-6">
+                Everything your hospital needs{" "}
                 <span className="teal-gradient-text">integrated</span>
               </h2>
-              <p className="text-slate-400 leading-relaxed mb-8">
+              <p className="text-slate-400 mb-8 text-sm sm:text-base">
                 MediCore HMS unifies clinical, administrative, and financial operations
-                in a single, cohesive platform. Designed for the demands of modern healthcare.
+                in a cohesive platform.
               </p>
-              <Link
-                href="/admin/dashboard"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-400 text-navy-900 text-navy font-semibold rounded-xl transition-all shadow-lg shadow-amber-500/20"
-              >
-                View Admin Dashboard <ArrowRight className="w-4 h-4" />
-              </Link>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="grid grid-cols-1 gap-3"
-            >
+            <div className="space-y-3">
               {features.map((feature, i) => (
                 <motion.div
                   key={feature}
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="flex items-center gap-3 p-4 bg-surface-2 rounded-xl border border-border hover:border-teal-500/30 transition-all group"
+                  className="flex items-center gap-3 p-4 bg-surface-2 rounded-xl border border-border"
                 >
-                  <CheckCircle className="w-5 h-5 text-teal-500 flex-shrink-0" />
-                  <span className="text-sm text-slate-300 group-hover:text-slate-200 transition-colors">{feature}</span>
+                  <CheckCircle className="w-5 h-5 text-teal-500" />
+                  <span className="text-sm text-slate-300">{feature}</span>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="relative z-10 border-t border-border px-8 py-8">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
+      {/* ================= FOOTER ================= */}
+      <footer className="relative z-10 border-t border-border px-4 sm:px-6 lg:px-8 py-8">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+          <div className="flex items-center gap-3 justify-center md:justify-start">
             <div className="w-8 h-8 rounded-lg bg-teal-500/15 flex items-center justify-center">
               <Heart className="w-4 h-4 text-teal-400" />
             </div>
             <span className="font-serif text-slate-400">MediCore HMS</span>
           </div>
+
           <p className="text-sm text-slate-600">
             © 2026 MediCore Hospital Management System. All rights reserved.
           </p>
-          <div className="flex items-center gap-2">
+
+          <div className="flex items-center gap-2 justify-center md:justify-end">
             <Star className="w-3 h-3 text-amber-400" />
-            <span className="text-xs text-slate-600">Built for modern healthcare</span>
+            <span className="text-xs text-slate-600">
+              Built for modern healthcare
+            </span>
           </div>
         </div>
       </footer>
+
     </div>
   );
 }
