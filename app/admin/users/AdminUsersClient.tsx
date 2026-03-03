@@ -12,7 +12,7 @@ import { generateStaffCode, formatDate } from "@/lib/utils";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
-const roleOpts = [{ value: "", label: "Select role" }, ...["admin","doctor","nurse","receptionist"].map(r => ({ value: r, label: r.charAt(0).toUpperCase() + r.slice(1) }))];
+const roleOpts = [{ value: "", label: "Select role" }, ...["admin", "doctor", "nurse", "receptionist"].map(r => ({ value: r, label: r.charAt(0).toUpperCase() + r.slice(1) }))];
 const statusFilter = [{ value: "all", label: "All Status" }, { value: "active", label: "Active" }, { value: "inactive", label: "Inactive" }];
 
 interface User {
@@ -45,15 +45,32 @@ export function AdminUsersClient({ initialUsers, currentUserId }: { initialUsers
     const formData = new FormData(e.currentTarget);
     startSubmit(async () => {
       const result = await createUser(formData);
+
       if (result.success && result.data) {
-        setUsers((p) => [result.data!, ...p]);
+        // Normalize backend Date → frontend string
+        const normalizedUser: User = {
+          ...result.data,
+          createdAt:
+            typeof result.data.createdAt === "string"
+              ? result.data.createdAt
+              : new Date(result.data.createdAt).toISOString(),
+        };
+
+        setUsers((prev) => [normalizedUser, ...prev]);
+
         setCode("");
         setShowForm(false);
-        (e.target as HTMLFormElement).reset();
-        toast.success("Staff created!", { description: result.message });
+        e.currentTarget.reset();
+
+        toast.success("Staff created!", {
+          description: result.message,
+        });
+
         router.refresh();
       } else {
-        toast.error("Failed", { description: result.message });
+        toast.error("Failed", {
+          description: result.message,
+        });
       }
     });
   };
@@ -124,7 +141,7 @@ export function AdminUsersClient({ initialUsers, currentUserId }: { initialUsers
       <Card>
         <div className="flex flex-col sm:flex-row gap-3 mb-5">
           <Input placeholder="Search staff..." value={search} onChange={(e) => setSearch(e.target.value)} icon={<Search className="w-4 h-4" />} />
-          <Select options={[{ value: "all", label: "All Roles" }, ...["admin","doctor","nurse","receptionist"].map(r => ({ value: r, label: r.charAt(0).toUpperCase()+r.slice(1) }))]} value={roleFilter} onChange={(e) => setRoleFilter(e.target.value)} />
+          <Select options={[{ value: "all", label: "All Roles" }, ...["admin", "doctor", "nurse", "receptionist"].map(r => ({ value: r, label: r.charAt(0).toUpperCase() + r.slice(1) }))]} value={roleFilter} onChange={(e) => setRoleFilter(e.target.value)} />
           <Select options={statusFilter} value={statusF} onChange={(e) => setStatusF(e.target.value)} />
         </div>
 

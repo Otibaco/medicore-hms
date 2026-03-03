@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Users, UserPlus, TrendingUp, BedDouble, Activity,
   Shield, Trash2, Eye, Search, Hash, Mail, Phone, Lock,
-  RefreshCw, CheckCircle, XCircle, NigeriaNaira
+  RefreshCw, CheckCircle, XCircle
 } from "lucide-react";
 import { Card, StatCard } from "@/components/ui/Card";
 import { Input, Select } from "@/components/ui/Input";
@@ -91,13 +91,29 @@ export function AdminDashboardClient({
 
     startSubmit(async () => {
       const result = await createUser(formData);
+
       if (result.success && result.data) {
-        setUsers((p) => [result.data!, ...p]);
+        const normalizedUser = {
+          ...result.data,
+          createdAt:
+            typeof result.data.createdAt === "string"
+              ? result.data.createdAt
+              : new Date(result.data.createdAt).toISOString(),
+        };
+
+        setUsers((prev) => [normalizedUser, ...prev]);
+
         setGeneratedCode("");
         (e.target as HTMLFormElement).reset();
-        toast.success("Staff account created!", { description: result.message, duration: 5000 });
+
+        toast.success("Staff account created!", {
+          description: result.message,
+          duration: 5000,
+        });
       } else {
-        toast.error("Failed to create user", { description: result.message });
+        toast.error("Failed to create user", {
+          description: result.message,
+        });
       }
     });
   };
@@ -141,9 +157,8 @@ export function AdminDashboardClient({
       <div className="flex gap-1 p-1 bg-surface rounded-xl border border-border w-fit mb-6">
         {(["overview", "users"] as const).map((s) => (
           <button key={s} onClick={() => setActiveSection(s)}
-            className={`px-5 py-2.5 rounded-lg text-sm font-medium capitalize transition-all duration-200 ${
-              activeSection === s ? "bg-surface-2 text-slate-200 border border-border" : "text-slate-500 hover:text-slate-300"
-            }`}>
+            className={`px-5 py-2.5 rounded-lg text-sm font-medium capitalize transition-all duration-200 ${activeSection === s ? "bg-surface-2 text-slate-200 border border-border" : "text-slate-500 hover:text-slate-300"
+              }`}>
             {s === "overview" ? "Overview" : "User Management"}
           </button>
         ))}
@@ -330,12 +345,11 @@ export function AdminDashboardClient({
                 {filteredUsers.map((user, i) => (
                   <motion.div key={user._id} initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.04 }}
                     className="flex items-center gap-3 p-3 rounded-xl bg-surface-2 border border-border hover:border-amber-500/20 transition-all group">
-                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-xs font-bold flex-shrink-0 ${
-                      user.role === "admin" ? "bg-amber-500/15 text-amber-300 border border-amber-500/20" :
-                      user.role === "doctor" ? "bg-teal-500/15 text-teal-300 border border-teal-500/20" :
-                      user.role === "nurse" ? "bg-violet-500/15 text-violet-300 border border-violet-500/20" :
-                      "bg-blue-500/15 text-blue-300 border border-blue-500/20"
-                    }`}>
+                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-xs font-bold flex-shrink-0 ${user.role === "admin" ? "bg-amber-500/15 text-amber-300 border border-amber-500/20" :
+                        user.role === "doctor" ? "bg-teal-500/15 text-teal-300 border border-teal-500/20" :
+                          user.role === "nurse" ? "bg-violet-500/15 text-violet-300 border border-violet-500/20" :
+                            "bg-blue-500/15 text-blue-300 border border-blue-500/20"
+                      }`}>
                       {user.firstName[0]}{user.lastName[0]}
                     </div>
                     <div className="flex-1 min-w-0">
@@ -352,11 +366,10 @@ export function AdminDashboardClient({
                     <button
                       onClick={() => handleToggleStatus(user._id, user.status, `${user.firstName} ${user.lastName}`)}
                       disabled={deactivating}
-                      className={`p-1.5 rounded-lg transition-all opacity-0 group-hover:opacity-100 ${
-                        user.status === "active"
+                      className={`p-1.5 rounded-lg transition-all opacity-0 group-hover:opacity-100 ${user.status === "active"
                           ? "text-slate-600 hover:text-red-400 hover:bg-red-500/10"
                           : "text-slate-600 hover:text-emerald-400 hover:bg-emerald-500/10"
-                      }`}
+                        }`}
                       title={user.status === "active" ? "Deactivate" : "Reactivate"}
                     >
                       {user.status === "active" ? <XCircle className="w-4 h-4" /> : <CheckCircle className="w-4 h-4" />}
