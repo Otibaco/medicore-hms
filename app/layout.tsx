@@ -27,37 +27,37 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-midnight text-slate-200`}>
         <SessionProvider>
           {children}
           <Toaster
-          position="top-right"
-          expand={false}
-          richColors={false}
-          closeButton
-          toastOptions={{
-            style: {
-              background: "#0e1a2e",
-              border: "1px solid #1e3252",
-              color: "#e2e8f0",
-              fontFamily: "DM Sans, sans-serif",
-              fontSize: "14px",
-              borderRadius: "12px",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(20,184,166,0.1)",
-            },
-            classNames: {
-              title: "font-semibold text-slate-100",
-              description: "text-slate-400 text-sm",
-              actionButton: "bg-teal-500 text-white hover:bg-teal-400",
-              cancelButton: "bg-surface-3 text-slate-400",
-              closeButton: "bg-surface-2 border-border text-slate-400 hover:text-slate-200",
-              success: "border-teal-500/30",
-              error: "border-red-500/30",
-              warning: "border-gold-500/30",
-              info: "border-blue-500/30",
-            },
-          }}
-        />
+            position="top-right"
+            expand={false}
+            richColors={false}
+            closeButton
+            toastOptions={{
+              style: {
+                background: "#0e1a2e",
+                border: "1px solid #1e3252",
+                color: "#e2e8f0",
+                fontFamily: "DM Sans, sans-serif",
+                fontSize: "14px",
+                borderRadius: "12px",
+                boxShadow: "0 20px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(20,184,166,0.1)",
+              },
+              classNames: {
+                title: "font-semibold text-slate-100",
+                description: "text-slate-400 text-sm",
+                actionButton: "bg-teal-500 text-white hover:bg-teal-400",
+                cancelButton: "bg-surface-3 text-slate-400",
+                closeButton: "bg-surface-2 border-border text-slate-400 hover:text-slate-200",
+                success: "border-teal-500/30",
+                error: "border-red-500/30",
+                warning: "border-gold-500/30",
+                info: "border-blue-500/30",
+              },
+            }}
+          />
         </SessionProvider>
       </body>
     </html>

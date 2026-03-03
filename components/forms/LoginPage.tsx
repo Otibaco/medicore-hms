@@ -179,9 +179,6 @@ export function LoginPage({
             />
 
             <div className="flex items-center justify-between">
-              <button type="button" onClick={fillDemo} className="text-xs text-teal-500 hover:text-teal-400 transition-colors underline underline-offset-2">
-                Use demo credentials
-              </button>
               <span className="text-xs text-slate-600">Contact admin to reset password</span>
             </div>
 
@@ -190,7 +187,7 @@ export function LoginPage({
             </Button>
           </form>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-6 p-4 bg-surface-2 border border-border rounded-xl">
+          {/* <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-6 p-4 bg-surface-2 border border-border rounded-xl">
             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Demo Credentials</p>
             <div className="space-y-1">
               <div className="flex justify-between text-xs">
@@ -202,7 +199,7 @@ export function LoginPage({
                 <span className="font-mono text-slate-400">{demoPassword}</span>
               </div>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           <div className="mt-6 pt-6 border-t border-border">
             <p className="text-xs text-slate-600 text-center mb-4">Or sign in as another role</p>
