@@ -405,7 +405,7 @@ export function AdminDashboardClient({
                   label="Email *"
                   name="email"
                   type="email"
-                  placeholder="staff@medicore.ng"
+                  placeholder="staff@SalutemRapha.ng"
                   icon={<Mail className="w-3.5 h-3.5" />}
                   required
                 />

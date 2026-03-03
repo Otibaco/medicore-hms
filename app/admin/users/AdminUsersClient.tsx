@@ -105,7 +105,7 @@ export function AdminUsersClient({ initialUsers, currentUserId }: { initialUsers
                   <Input label="Last Name *" name="lastName" placeholder="Okafor" required />
                 </div>
                 <div className="grid grid-cols-2 gap-3">
-                  <Input label="Email *" name="email" type="email" placeholder="staff@medicore.ng" required icon={<Mail className="w-3.5 h-3.5" />} />
+                  <Input label="Email *" name="email" type="email" placeholder="staff@SalutemRapha.ng" required icon={<Mail className="w-3.5 h-3.5" />} />
                   <Input label="Phone *" name="phone" placeholder="08012345678" required icon={<Phone className="w-3.5 h-3.5" />} />
                 </div>
                 <div className="grid grid-cols-2 gap-3">

@@ -10,7 +10,7 @@ export default function ReceptionistLoginPage() {
       accentColor="text-blue-400"
       iconBg="bg-blue-500/15 text-blue-400"
       icon={<UserCheck className="w-7 h-7" />}
-      demoEmail="linda.t@medicore.com"
+      demoEmail="linda.t@SalutemRapha.com"
     />
   );
 }

@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MediCore HMS | Hospital Management System",
+  title: "SalutemRapha HMS | Hospital Management System",
   description: "Professional Hospital Management System for Nigerian Healthcare",
 };
 

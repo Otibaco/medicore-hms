@@ -197,7 +197,7 @@ export function SettingsClient({ currentUser, settings, userRole }: Props) {
                 </div>
               </div>
               <form onSubmit={handleSaveSettings} className="space-y-4">
-                <Input label="Hospital Name *" name="hospitalName" defaultValue={settings?.hospitalName ?? ""} placeholder="MediCore General Hospital" required />
+                <Input label="Hospital Name *" name="hospitalName" defaultValue={settings?.hospitalName ?? ""} placeholder="SalutemRapha General Hospital" required />
                 <Input label="Hospital Address *" name="hospitalAddress" defaultValue={settings?.hospitalAddress ?? ""} placeholder="14 Adeola Odeku, Victoria Island" required />
                 <div className="grid grid-cols-2 gap-3">
                   <Input label="Phone *" name="hospitalPhone" defaultValue={settings?.hospitalPhone ?? ""} placeholder="01-2345678" required />

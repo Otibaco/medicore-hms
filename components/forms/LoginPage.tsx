@@ -28,7 +28,7 @@ export function LoginPage({
   iconBg,
   icon,
   demoEmail,
-  demoPassword = "MediCore@2026",
+  demoPassword = "SalutemRapha@2026",
 }: LoginPageProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -102,7 +102,7 @@ export function LoginPage({
               <Heart className="w-5 h-5 text-white" />
             </div>
             <div>
-              <p className="font-serif text-xl font-bold text-slate-100">MediCore</p>
+              <p className="font-serif text-xl font-bold text-slate-100">SalutemRapha</p>
               <p className="text-[9px] text-teal-500/70 tracking-[0.3em] uppercase">Hospital Management</p>
             </div>
           </Link>
@@ -126,7 +126,7 @@ export function LoginPage({
               ))}
             </div>
           </div>
-          <div className="text-xs text-slate-600">© 2026 MediCore HMS · Nigerian Healthcare Platform</div>
+          <div className="text-xs text-slate-600">© 2026 SalutemRapha HMS · Nigerian Healthcare Platform</div>
         </div>
       </div>
 
@@ -142,7 +142,7 @@ export function LoginPage({
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center">
               <Heart className="w-4 h-4 text-white" />
             </div>
-            <p className="font-serif text-lg font-bold text-slate-100">MediCore HMS</p>
+            <p className="font-serif text-lg font-bold text-slate-100">SalutemRapha HMS</p>
           </div>
 
           <div className="mb-8">
@@ -158,7 +158,7 @@ export function LoginPage({
             <Input
               label="Email Address"
               type="email"
-              placeholder="you@medicore.ng"
+              placeholder="you@SalutemRapha.ng"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               icon={<Mail className="w-4 h-4" />}

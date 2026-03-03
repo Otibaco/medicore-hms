@@ -20,7 +20,7 @@ export default function NotFound() {
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center shadow-lg">
             <Heart className="w-5 h-5 text-white" />
           </div>
-          <span className="font-serif text-xl font-bold text-slate-100">MediCore</span>
+          <span className="font-serif text-xl font-bold text-slate-100">SalutemRapha</span>
         </div>
 
         {/* 404 */}
@@ -47,7 +47,7 @@ export default function NotFound() {
 
         </div>
 
-        <p className="mt-12 text-xs text-slate-700">© 2026 MediCore HMS · Nigerian Healthcare Platform</p>
+        <p className="mt-12 text-xs text-slate-700">© 2026 SalutemRapha HMS · Nigerian Healthcare Platform</p>
       </div>
     </div>
   );

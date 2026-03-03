@@ -162,7 +162,7 @@ export function DashboardLayout({ children, role, userName, userCode, pageTitle 
   useEffect(() => { setMobileOpen(false); }, [pathname]);
 
   const handleLogout = async () => {
-    toast.success("Signed out", { description: "You have been logged out of MediCore HMS." });
+    toast.success("Signed out", { description: "You have been logged out of SalutemRapha HMS." });
     await signOut({ callbackUrl: "/" });
   };
 
@@ -222,7 +222,7 @@ export function DashboardLayout({ children, role, userName, userCode, pageTitle 
         </Link>
         {(!collapsed || mobile) && (
           <div className="flex-1 min-w-0">
-            <p className="font-serif text-[14px] font-bold text-slate-100 leading-none tracking-tight">MediCore</p>
+            <p className="font-serif text-[14px] font-bold text-slate-100 leading-none tracking-tight">SalutemRapha</p>
             <p className="text-[8.5px] text-teal-500/50 tracking-[0.3em] uppercase mt-[3px]">HMS</p>
           </div>
         )}
@@ -364,7 +364,7 @@ export function DashboardLayout({ children, role, userName, userCode, pageTitle 
               <Menu className="w-5 h-5" />
             </button>
             <div className="flex items-center gap-1.5 text-sm min-w-0">
-              <span className="text-slate-700 hidden sm:block text-[12px]">MediCore</span>
+              <span className="text-slate-700 hidden sm:block text-[12px]">SalutemRapha</span>
               <ChevronRight className="w-3 h-3 text-slate-800 hidden sm:block flex-shrink-0" />
               <span className={cn("font-medium text-[12px] flex-shrink-0", cfg.accent)}>{cfg.label}</span>
               <ChevronRight className="w-3 h-3 text-slate-800 flex-shrink-0" />

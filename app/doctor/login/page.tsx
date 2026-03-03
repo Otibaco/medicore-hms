@@ -10,7 +10,7 @@ export default function DoctorLoginPage() {
       accentColor="text-teal-400"
       iconBg="bg-teal-500/15 text-teal-400"
       icon={<Stethoscope className="w-7 h-7" />}
-      demoEmail="s.chen@medicore.com"
+      demoEmail="s.chen@SalutemRapha.com"
     />
   );
 }

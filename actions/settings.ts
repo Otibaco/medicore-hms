@@ -18,10 +18,10 @@ export async function getSettings(): Promise<ActionResult<ISettings>> {
     if (!settings) {
       // Return defaults if not set yet
       settings = {
-        hospitalName: "MediCore Hospital",
+        hospitalName: "SalutemRapha Hospital",
         hospitalAddress: "123 Health Avenue, Lagos",
         hospitalPhone: "08012345678",
-        hospitalEmail: "info@medicore.ng",
+        hospitalEmail: "info@SalutemRapha.ng",
         state: "Lagos",
         lga: "Ikeja",
         currency: "NGN",

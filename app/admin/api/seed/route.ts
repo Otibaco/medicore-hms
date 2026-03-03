@@ -38,11 +38,11 @@ export async function POST(req: NextRequest) {
     staffCode: adminCode,
     firstName: "System",
     lastName: "Administrator",
-    email: "admin@medicore.ng",
+    email: "admin@SalutemRapha.ng",
     phone: "08000000001",
     role: "admin",
     status: "active",
-    password: process.env.DEFAULT_ADMIN_PASSWORD ?? "MediCore@2026",
+    password: process.env.DEFAULT_ADMIN_PASSWORD ?? "SalutemRapha@2026",
     department: "Administration",
     title: "System Administrator",
   });
@@ -53,11 +53,11 @@ export async function POST(req: NextRequest) {
     staffCode: doctorCode,
     firstName: "Chukwuemeka",
     lastName: "Okafor",
-    email: "doctor@medicore.ng",
+    email: "doctor@SalutemRapha.ng",
     phone: "08000000002",
     role: "doctor",
     status: "active",
-    password: "MediCore@2026",
+    password: "SalutemRapha@2026",
     department: "General Practice",
     title: "Dr.",
     specialty: "General Medicine",
@@ -69,11 +69,11 @@ export async function POST(req: NextRequest) {
     staffCode: nurseCode,
     firstName: "Amaka",
     lastName: "Eze",
-    email: "nurse@medicore.ng",
+    email: "nurse@SalutemRapha.ng",
     phone: "08000000003",
     role: "nurse",
     status: "active",
-    password: "MediCore@2026",
+    password: "SalutemRapha@2026",
     department: "Nursing",
     title: "RN",
   });
@@ -84,11 +84,11 @@ export async function POST(req: NextRequest) {
     staffCode: receptionCode,
     firstName: "Folake",
     lastName: "Adeleke",
-    email: "receptionist@medicore.ng",
+    email: "receptionist@SalutemRapha.ng",
     phone: "08000000004",
     role: "receptionist",
     status: "active",
-    password: "MediCore@2026",
+    password: "SalutemRapha@2026",
     department: "Front Desk",
     title: "Ms.",
   });
@@ -97,10 +97,10 @@ export async function POST(req: NextRequest) {
   await SettingsModel.findOneAndUpdate(
     {},
     {
-      hospitalName: "MediCore General Hospital",
+      hospitalName: "SalutemRapha General Hospital",
       hospitalAddress: "14 Adeola Odeku Street, Victoria Island",
       hospitalPhone: "01-2345678",
-      hospitalEmail: "info@medicore.ng",
+      hospitalEmail: "info@SalutemRapha.ng",
       state: "Lagos",
       lga: "Eti-Osa",
       rcNumber: "RC-123456",
@@ -117,7 +117,7 @@ export async function POST(req: NextRequest) {
   // Seed a welcome notification for admin
   await NotificationModel.create({
     recipient: admin._id,
-    title: "Welcome to MediCore HMS",
+    title: "Welcome to SalutemRapha HMS",
     message: "Your hospital management system is set up and ready. Start by adding staff members and registering patients.",
     severity: "success",
     category: "system",
@@ -127,18 +127,18 @@ export async function POST(req: NextRequest) {
   await NotificationModel.create({
     recipient: doctor._id,
     title: "Welcome, Dr. Okafor",
-    message: "Your MediCore account is ready. You can now view your patients and manage diagnoses.",
+    message: "Your SalutemRapha account is ready. You can now view your patients and manage diagnoses.",
     severity: "info",
     category: "system",
   });
 
   return NextResponse.json({
-    message: "✅ MediCore database seeded successfully!",
+    message: "✅ SalutemRapha database seeded successfully!",
     credentials: {
-      admin: { email: "admin@medicore.ng", password: process.env.DEFAULT_ADMIN_PASSWORD ?? "MediCore@2026", staffCode: adminCode },
-      doctor: { email: "doctor@medicore.ng", password: "MediCore@2026", staffCode: doctorCode },
-      nurse: { email: "nurse@medicore.ng", password: "MediCore@2026", staffCode: nurseCode },
-      receptionist: { email: "receptionist@medicore.ng", password: "MediCore@2026", staffCode: receptionCode },
+      admin: { email: "admin@SalutemRapha.ng", password: process.env.DEFAULT_ADMIN_PASSWORD ?? "SalutemRapha@2026", staffCode: adminCode },
+      doctor: { email: "doctor@SalutemRapha.ng", password: "SalutemRapha@2026", staffCode: doctorCode },
+      nurse: { email: "nurse@SalutemRapha.ng", password: "SalutemRapha@2026", staffCode: nurseCode },
+      receptionist: { email: "receptionist@SalutemRapha.ng", password: "SalutemRapha@2026", staffCode: receptionCode },
     },
     note: "⚠️ Change all passwords immediately after first login. Delete or protect this endpoint in production.",
   });

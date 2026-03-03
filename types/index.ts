@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-//  MediCore HMS – Shared Types
+//  SalutemRapha HMS – Shared Types
 // ─────────────────────────────────────────────
 
 export type Role = "admin" | "doctor" | "nurse" | "receptionist";

@@ -10,7 +10,7 @@ export default function AdminLoginPage() {
       accentColor="text-amber-400"
       iconBg="bg-amber-500/15 text-amber-400"
       icon={<ShieldCheck className="w-7 h-7" />}
-      demoEmail="r.johnson@medicore.com"
+      demoEmail="r.johnson@SalutemRapha.com"
     />
   );
 }

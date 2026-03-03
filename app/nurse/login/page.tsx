@@ -10,7 +10,7 @@ export default function NurseLoginPage() {
       accentColor="text-violet-400"
       iconBg="bg-violet-500/15 text-violet-400"
       icon={<ClipboardList className="w-7 h-7" />}
-      demoEmail="m.davis@medicore.com"
+      demoEmail="m.davis@SalutemRapha.com"
     />
   );
 }

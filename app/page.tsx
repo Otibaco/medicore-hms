@@ -118,7 +118,7 @@ export default function HomePage() {
           </div>
           <div className="leading-tight">
             <p className="font-serif text-lg sm:text-xl font-bold text-slate-100">
-              MediCore
+              SalutemRapha
             </p>
             <p className="text-[9px] text-teal-500/70 tracking-[0.3em] uppercase">
               Hospital Management
@@ -288,7 +288,7 @@ export default function HomePage() {
                 <span className="teal-gradient-text">integrated</span>
               </h2>
               <p className="text-slate-400 mb-8 text-sm sm:text-base">
-                MediCore HMS unifies clinical, administrative, and financial operations
+                SalutemRapha HMS unifies clinical, administrative, and financial operations
                 in a cohesive platform.
               </p>
             </div>
@@ -319,11 +319,11 @@ export default function HomePage() {
             <div className="w-8 h-8 rounded-lg bg-teal-500/15 flex items-center justify-center">
               <Heart className="w-4 h-4 text-teal-400" />
             </div>
-            <span className="font-serif text-slate-400">MediCore HMS</span>
+            <span className="font-serif text-slate-400">SalutemRapha HMS</span>
           </div>
 
           <p className="text-sm text-slate-600">
-            © 2026 MediCore Hospital Management System. All rights reserved.
+            © 2026 SalutemRapha Hospital Management System. All rights reserved.
           </p>
 
           <div className="flex items-center gap-2 justify-center md:justify-end">
