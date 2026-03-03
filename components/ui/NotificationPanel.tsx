@@ -37,7 +37,6 @@ export function NotificationPanel({ initialCount = 0 }: { initialCount?: number 
   const [unreadCount, setUnreadCount] = useState(initialCount);
   const [loaded, setLoaded] = useState(false);
 
-  // Load notifications when panel opens
   const loadNotifications = async () => {
     try {
       const { getNotifications } = await import("@/actions/notifications");
@@ -49,7 +48,7 @@ export function NotificationPanel({ initialCount = 0 }: { initialCount?: number 
         setLoaded(true);
       }
     } catch {
-      // silently ignore
+      /* silently ignore */
     }
   };
 
@@ -58,6 +57,15 @@ export function NotificationPanel({ initialCount = 0 }: { initialCount?: number 
       loadNotifications();
     }
   }, [open, loaded]);
+
+  // Lock body scroll on mobile when open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [open]);
 
   const handleMarkRead = async (id: string) => {
     await markAsRead(id);
@@ -79,12 +87,18 @@ export function NotificationPanel({ initialCount = 0 }: { initialCount?: number 
 
   return (
     <div className="relative">
-      <button onClick={() => setOpen(!open)}
-        className="relative p-2 rounded-xl bg-surface-2 border border-border hover:border-teal-500/30 transition-all duration-200 text-slate-400 hover:text-slate-200">
+      {/* Trigger Button */}
+      <button 
+        onClick={() => setOpen(!open)}
+        className="relative p-2.5 rounded-xl bg-surface-2 border border-[#1e3252] hover:border-teal-500/30 transition-all text-slate-400 hover:text-slate-200"
+      >
         <Bell className="w-5 h-5" />
         {unreadCount > 0 && (
-          <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }}
-            className="absolute -top-1 -right-1 w-5 h-5 bg-teal-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+          <motion.span 
+            initial={{ scale: 0 }} 
+            animate={{ scale: 1 }}
+            className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 bg-teal-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-[#0f172a]"
+          >
             {unreadCount > 9 ? "9+" : unreadCount}
           </motion.span>
         )}
@@ -93,80 +107,128 @@ export function NotificationPanel({ initialCount = 0 }: { initialCount?: number 
       <AnimatePresence>
         {open && (
           <>
-            <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm lg:bg-transparent" 
+              onClick={() => setOpen(false)} 
+            />
+
+            {/* Panel Container */}
             <motion.div
-              initial={{ opacity: 0, y: 8, scale: 0.96 }}
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 8, scale: 0.96 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="absolute right-0 top-12 w-96 glass-card rounded-2xl shadow-2xl z-50 overflow-hidden"
-              style={{ boxShadow: "0 25px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(20,184,166,0.1)" }}
+              exit={{ opacity: 0, y: 20, scale: 0.95 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className={cn(
+                "fixed inset-x-4 bottom-4 top-auto z-[101] lg:absolute lg:inset-auto lg:right-0 lg:top-14",
+                "w-auto lg:w-[400px] flex flex-col bg-[#111c2e] border border-[#1e3252] rounded-2xl shadow-2xl overflow-hidden"
+              )}
             >
-              <div className="px-5 py-4 border-b border-border flex items-center justify-between">
+              {/* Header */}
+              <div className="px-5 py-4 border-b border-[#1e3252] flex items-center justify-between bg-surface-2/30">
                 <div>
-                  <h3 className="font-semibold text-slate-200">Notifications</h3>
-                  <p className="text-xs text-slate-500">{unreadCount} unread</p>
+                  <h3 className="text-sm sm:text-base font-bold text-slate-100">Notifications</h3>
+                  <p className="text-[10px] sm:text-xs font-medium text-slate-500 uppercase tracking-wider">
+                    {unreadCount} Unread Messages
+                  </p>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                   {unreadCount > 0 && (
-                    <button onClick={handleMarkAllRead} className="text-xs text-teal-400 hover:text-teal-300 transition-colors">
-                      Mark all read
+                    <button 
+                      onClick={handleMarkAllRead} 
+                      className="text-[11px] font-bold text-teal-400 hover:text-teal-300 px-2 py-1 transition-colors"
+                    >
+                      Clear All
                     </button>
                   )}
-                  <button onClick={() => setOpen(false)} className="p-1 rounded-lg hover:bg-surface-3 text-slate-500 hover:text-slate-300 transition-colors">
+                  <button 
+                    onClick={() => setOpen(false)} 
+                    className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition-colors"
+                  >
                     <X className="w-4 h-4" />
                   </button>
                 </div>
               </div>
 
-              <div className="max-h-96 overflow-y-auto">
+              {/* Body */}
+              <div className="max-h-[60vh] lg:max-h-[420px] overflow-y-auto p-2 space-y-1.5 custom-scrollbar">
                 {!loaded ? (
-                  <div className="flex items-center justify-center py-12">
-                    <div className="w-6 h-6 rounded-full border-2 border-teal-500/30 border-t-teal-500 animate-spin" />
+                  <div className="flex items-center justify-center py-20">
+                    <div className="w-8 h-8 rounded-full border-2 border-teal-500/20 border-t-teal-500 animate-spin" />
                   </div>
                 ) : notifications.length === 0 ? (
-                  <div className="px-5 py-12 text-center">
-                    <Bell className="w-10 h-10 text-slate-600 mx-auto mb-3" />
-                    <p className="text-slate-500 text-sm">All caught up!</p>
-                    <p className="text-slate-600 text-xs mt-1">No new notifications</p>
+                  <div className="flex flex-col items-center justify-center py-16 text-center">
+                    <div className="w-12 h-12 bg-slate-800/50 rounded-full flex items-center justify-center mb-3">
+                      <Bell className="w-6 h-6 text-slate-600 opacity-40" />
+                    </div>
+                    <p className="text-slate-300 font-semibold text-sm">Inbox is empty</p>
+                    <p className="text-slate-500 text-xs mt-1 px-10">We'll notify you when something important happens.</p>
                   </div>
                 ) : (
-                  <div className="p-2 flex flex-col gap-1">
-                    {notifications.map((notif) => (
-                      <motion.div key={notif._id} layout initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                        className={cn("relative flex gap-3 p-3 rounded-xl border transition-all group cursor-pointer",
-                          severityBg[notif.severity] ?? "bg-surface-2 border-border",
-                          !notif.isRead && "ring-1 ring-inset ring-white/5"
-                        )}
-                        onClick={() => !notif.isRead && handleMarkRead(notif._id)}>
-                        <div className="mt-0.5 flex-shrink-0">
-                          {severityIcon[notif.severity] ?? severityIcon.info}
+                  notifications.map((notif) => (
+                    <motion.div 
+                      key={notif._id} 
+                      layout 
+                      initial={{ opacity: 0, x: -10 }} 
+                      animate={{ opacity: 1, x: 0 }}
+                      className={cn(
+                        "relative flex gap-3 p-3.5 rounded-xl border transition-all cursor-pointer active:scale-[0.98] lg:active:scale-100 group",
+                        severityBg[notif.severity] ?? "bg-surface-2 border-[#1e3252]",
+                        !notif.isRead ? "ring-1 ring-inset ring-white/10 border-opacity-50" : "opacity-70"
+                      )}
+                      onClick={() => !notif.isRead && handleMarkRead(notif._id)}
+                    >
+                      <div className="mt-0.5 flex-shrink-0">
+                        {severityIcon[notif.severity] ?? severityIcon.info}
+                      </div>
+                      
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-start justify-between gap-2 mb-0.5">
+                          <p className={cn(
+                            "text-sm font-bold leading-none truncate", 
+                            notif.isRead ? "text-slate-400" : "text-slate-100"
+                          )}>
+                            {notif.title}
+                          </p>
+                          <span className="text-[10px] font-medium text-slate-500 whitespace-nowrap">
+                            {formatTimeAgo(notif.createdAt)}
+                          </span>
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-start justify-between gap-2">
-                            <p className={cn("text-sm font-medium leading-tight", notif.isRead ? "text-slate-400" : "text-slate-200")}>
-                              {notif.title}
-                            </p>
-                            {!notif.isRead && <span className="w-2 h-2 rounded-full bg-teal-400 flex-shrink-0 mt-1.5" />}
+                        <p className="text-xs text-slate-400 leading-relaxed line-clamp-2 pr-4">
+                          {notif.message}
+                        </p>
+                        
+                        {!notif.isRead && (
+                          <div className="mt-2 flex items-center gap-1.5">
+                             <div className="w-1.5 h-1.5 rounded-full bg-teal-500" />
+                             <span className="text-[10px] font-bold text-teal-500 uppercase tracking-tighter">New Message</span>
                           </div>
-                          <p className="text-xs text-slate-500 mt-0.5 leading-relaxed line-clamp-2">{notif.message}</p>
-                          <p className="text-[10px] text-slate-600 mt-1">{formatTimeAgo(notif.createdAt)}</p>
-                        </div>
-                        <button
-                          onClick={(e) => { e.stopPropagation(); handleDismiss(notif._id, !notif.isRead); }}
-                          className="absolute top-2 right-2 p-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity text-slate-600 hover:text-slate-400">
-                          <X className="w-3 h-3" />
-                        </button>
-                      </motion.div>
-                    ))}
-                  </div>
+                        )}
+                      </div>
+
+                      <button
+                        onClick={(e) => { e.stopPropagation(); handleDismiss(notif._id, !notif.isRead); }}
+                        className="p-1 rounded-md text-slate-600 hover:text-slate-300 transition-opacity lg:opacity-0 group-hover:opacity-100"
+                      >
+                        <X className="w-3.5 h-3.5" />
+                      </button>
+                    </motion.div>
+                  ))
                 )}
               </div>
 
-              <div className="px-4 py-3 border-t border-border">
-                <Link href="/notifications" onClick={() => setOpen(false)}
-                  className="flex items-center justify-center gap-2 text-xs text-teal-400 hover:text-teal-300 transition-colors">
-                  View all notifications <ExternalLink className="w-3 h-3" />
+              {/* Footer */}
+              <div className="px-4 py-3.5 border-t border-[#1e3252] bg-surface-2/20">
+                <Link 
+                  href="/notifications" 
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-center gap-2 text-xs font-bold text-teal-400 hover:text-teal-300 transition-all uppercase tracking-widest"
+                >
+                  View All Notifications
+                  <ExternalLink className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </motion.div>

@@ -45,7 +45,7 @@ export function AdminAdmissionsClient({ stats, admissions }: { stats: { total: n
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-border">
+              <tr className="border-b border-[#1e3252]">
                 {["Patient", "Admission ID", "Ward", "Doctor", "Admitted By", "Admitted", "Status"].map(h => (
                   <th key={h} className="text-left text-xs text-slate-600 pb-3 pr-4 font-semibold uppercase tracking-wider">{h}</th>
                 ))}
