@@ -9,7 +9,7 @@ import { withAuth } from "@/lib/auth-guard";
 import { createAdmissionSchema, dischargePatientSchema } from "@/lib/validations";
 import { generateAdmissionId } from "@/lib/utils";
 import { audit } from "@/lib/audit";
-import type { ActionResult, IAdmission } from "@/types";
+import { ActionResult, IAdmission } from "@/types";
 
 export async function getAdmissions(status?: string): Promise<ActionResult<IAdmission[]>> {
   return withAuth(["admin", "doctor", "nurse"], async () => {
