@@ -14,7 +14,7 @@ import bcrypt from "bcryptjs";
 export async function getSettings(): Promise<ActionResult<ISettings>> {
   return withAuth(["admin", "doctor", "nurse", "receptionist"], async () => {
     await connectDB();
-    let settings = await SettingsModel.findOne().lean();
+    let settings = await SettingsModel.findOne().lean() as unknown as ISettings | null;
     if (!settings) {
       // Return defaults if not set yet
       settings = {
@@ -29,7 +29,7 @@ export async function getSettings(): Promise<ActionResult<ISettings>> {
         defaultConsultationFeeKobo: 500000,
         admissionFeeKobo: 2000000,
         updatedAt: new Date(),
-      } as unknown as ISettings;
+      } as ISettings;
     }
     return { success: true, message: "Settings fetched", data: settings as unknown as ISettings };
   });
