@@ -102,8 +102,15 @@ export async function getAdminDashboardStats(): Promise<ActionResult<DashboardSt
 }
 
 // Simpler dashboard stats for each role
-export async function getRoleDashboardStats(role: string) {
-  return withAuth(["admin", "doctor", "nurse", "receptionist"], async (currentUser) => {
+
+type RoleDashboardData = 
+  | { todayPatients: number; pendingInvoices: number; totalPatients: number }
+  | { currentAdmissions: number; pendingLabs: number; activePatients: number }
+  | { myPatients: number; pendingLabs: number; completedDiagnoses: number }
+  | Record<string, never>;
+
+export async function getRoleDashboardStats(role: string): Promise<ActionResult<RoleDashboardData>> {
+  return withAuth(["admin", "doctor", "nurse", "receptionist"], async (currentUser): Promise<ActionResult<RoleDashboardData>> => {
     await connectDB();
 
     if (role === "receptionist") {
