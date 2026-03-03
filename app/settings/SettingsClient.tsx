@@ -19,7 +19,7 @@ const TABS = [
 
 function Toggle({ checked, onChange, label, description }: { checked: boolean; onChange: (v: boolean) => void; label: string; description?: string }) {
   return (
-    <div className="flex items-center justify-between py-3 border-b border-white/[0.04] last:border-0">
+    <div className="flex items-center justify-between py-3 border-b [#1e3252]-white/[0.04] last:border-0">
       <div>
         <p className="text-sm text-slate-200 font-medium">{label}</p>
         {description && <p className="text-xs text-slate-600 mt-0.5">{description}</p>}
@@ -79,22 +79,39 @@ export function SettingsClient({ currentUser, settings, userRole }: Props) {
     <div>
       <PageHeader title="Settings" subtitle="Manage your account and system preferences" icon={<Database className="w-5 h-5 text-teal-400" />} />
 
-      {/* Tab pills */}
-      <div className="flex gap-1 p-1 bg-surface rounded-xl border border-border w-fit mb-8 flex-wrap">
-        {TABS.filter(t => t.id !== "system" || userRole === "admin").map((tab) => (
-          <button key={tab.id} onClick={() => setActiveTab(tab.id)}
-            className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all", activeTab === tab.id ? "bg-surface-2 text-slate-200 border border-border" : "text-slate-500 hover:text-slate-300")}>
-            {tab.icon} {tab.label}
-          </button>
-        ))}
-      </div>
+      {/* Tab pills - Horizontal Scroll on Mobile, No Wrapping */}
+<div className="mb-8 w-full">
+  <div className="flex items-center gap-1 p-1 bg-surface rounded-xl border border-[#1e3252] overflow-x-auto overflow-y-hidden no-scrollbar whitespace-nowrap scroll-smooth">
+    {TABS.filter(t => t.id !== "system" || userRole === "admin").map((tab) => {
+      const isActive = activeTab === tab.id;
+      return (
+        <button 
+          key={tab.id} 
+          onClick={() => setActiveTab(tab.id)}
+          className={cn(
+            "flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2.5 rounded-lg text-[11px] sm:text-sm font-medium transition-all shrink-0", 
+            isActive 
+              ? "bg-surface-2 text-slate-200 border border-border shadow-sm" 
+              : "text-slate-500 hover:text-slate-300"
+          )}
+        >
+          {/* Ensure icons scale with the text */}
+          <span className="[&>svg]:w-3.5 [&>svg]:h-3.5 sm:[&>svg]:w-4 sm:[&>svg]:h-4 flex-shrink-0">
+            {tab.icon}
+          </span>
+          {tab.label}
+        </button>
+      );
+    })}
+  </div>
+</div>
 
       <div className="max-w-2xl">
         {/* Profile Tab */}
         {activeTab === "profile" && (
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
             <Card>
-              <div className="flex items-center gap-4 mb-6 pb-6 border-b border-border">
+              <div className="flex items-center gap-4 mb-6 pb-6 border-b border-[#1e3252]">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center text-xl font-bold text-white">
                   {currentUser ? `${currentUser.firstName[0]}${currentUser.lastName[0]}` : "?"}
                 </div>
@@ -194,7 +211,7 @@ export function SettingsClient({ currentUser, settings, userRole }: Props) {
                   <Input label="RC Number" name="rcNumber" defaultValue={settings?.rcNumber ?? ""} placeholder="RC-123456" />
                   <Input label="NHIS Code" name="nhisCode" defaultValue={settings?.nhisCode ?? ""} placeholder="NHIS-MC-001" />
                 </div>
-                <div className="border-t border-border pt-4">
+                <div className="border-t border-[#1e3252] pt-4">
                   <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold mb-3">Fee Configuration (₦)</p>
                   <div className="grid grid-cols-2 gap-3">
                     <Input label="Consultation Fee (₦) *" name="defaultConsultationFeeNaira" type="number" step="100" defaultValue={settings ? koboToNaira(settings.defaultConsultationFeeKobo).toString() : "5000"} required />

@@ -92,7 +92,7 @@ export function NotificationsClient({ initialNotifications }: { initialNotificat
               return (
                 <button key={cat} onClick={() => setSelectedCategory(cat)}
                   className={cn("w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-all", selectedCategory === cat
-                    ? "bg-teal-500/15 text-teal-300 border border-teal-500/20"
+                    ? "bg-teal-500/15 text-teal-300 border [#1e3252]-teal-500/20"
                     : "text-slate-500 hover:text-slate-300 hover:bg-surface-2")}>
                   <span>{cat}</span>
                   {count > 0 && <span className="text-[10px] font-bold bg-teal-500/20 text-teal-300 px-1.5 py-0.5 rounded-full">{count}</span>}
@@ -101,7 +101,7 @@ export function NotificationsClient({ initialNotifications }: { initialNotificat
             })}
           </div>
 
-          <div className="mt-4 pt-4 border-t border-border">
+          <div className="mt-4 pt-4 border-t border-[#1e3252]">
             <label className="flex items-center justify-between cursor-pointer">
               <span className="text-sm text-slate-400">Unread only</span>
               <div className={cn("relative w-10 h-5 rounded-full transition-all cursor-pointer", showUnreadOnly ? "bg-teal-500" : "bg-surface-3 border border-border")} onClick={() => setShowUnreadOnly(!showUnreadOnly)}>
@@ -128,7 +128,7 @@ export function NotificationsClient({ initialNotifications }: { initialNotificat
                 return (
                   <motion.div key={notif._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ delay: i * 0.04 }}>
                     <div onClick={() => !notif.isRead && handleMarkRead(notif._id)}
-                      className={cn("p-4 rounded-xl border transition-all group cursor-pointer", notif.isRead ? "bg-surface-2 border-border opacity-70 hover:opacity-100" : `${cfg.bg} hover:brightness-110`)}>
+                      className={cn("p-4 rounded-xl border transition-all group cursor-pointer", notif.isRead ? "bg-surface-2 border-[#1e3252] opacity-70 hover:opacity-100" : `${cfg.bg} hover:brightness-110`)}>
                       <div className="flex items-start gap-4">
                         <div className={cn("w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 bg-black/20", cfg.color)}>
                           {cfg.icon}

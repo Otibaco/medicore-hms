@@ -120,7 +120,7 @@ export function AdminUsersClient({ initialUsers, currentUserId }: { initialUsers
                 <div>
                   <label className="text-sm font-medium text-slate-300 block mb-1.5">Staff Code *</label>
                   <div className="flex gap-2">
-                    <div className="flex-1 flex items-center px-4 py-2.5 rounded-xl bg-surface-3 border border-border">
+                    <div className="flex-1 flex items-center px-4 py-2.5 rounded-xl bg-surface-3 border border-[#1e3252]">
                       <Hash className="w-4 h-4 text-slate-600 mr-2" />
                       <span className={`font-mono text-sm ${code ? "text-amber-400 font-semibold" : "text-slate-600"}`}>{code || "Click Generate"}</span>
                     </div>
@@ -153,13 +153,13 @@ export function AdminUsersClient({ initialUsers, currentUserId }: { initialUsers
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-border">
+              <tr className="border-b border-[#1e3252]">
                 {["Name", "Code", "Role", "Department", "Status", "Joined", "Action"].map(h => (
                   <th key={h} className="text-left text-xs text-slate-600 pb-3 pr-4 font-semibold uppercase tracking-wider">{h}</th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-border/50">
+            <tbody className="divide-y divide-[#1e3252]/50">
               {filtered.map((user, i) => (
                 <motion.tr key={user._id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.03 }} className="hover:bg-surface-2/50 transition-colors">
                   <td className="py-3 pr-4">

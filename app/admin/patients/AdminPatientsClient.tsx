@@ -38,18 +38,18 @@ export function AdminPatientsClient({ patients }: { patients: Patient[] }) {
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-border">
+              <tr className="border-b border-[#1e3252]">
                 {["Patient", "ID", "Age", "Gender", "Phone", "State", "Payment", "Registered", "Status"].map(h => (
                   <th key={h} className="text-left text-xs text-slate-600 pb-3 pr-4 font-semibold uppercase tracking-wider">{h}</th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-border/50">
+            <tbody className="divide-y divide-[#1e3252]/50">
               {filtered.map((p, i) => (
                 <motion.tr key={p._id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.02 }} className="hover:bg-surface-2/50 transition-colors">
                   <td className="py-3 pr-4">
                     <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-lg bg-surface-3 border border-border flex items-center justify-center text-[10px] font-bold text-slate-400">{p.firstName[0]}{p.lastName[0]}</div>
+                      <div className="w-7 h-7 rounded-lg bg-surface-3 border border-[#1e3252] flex items-center justify-center text-[10px] font-bold text-slate-400">{p.firstName[0]}{p.lastName[0]}</div>
                       <span className="text-slate-200 font-medium">{p.firstName} {p.lastName}</span>
                     </div>
                   </td>
