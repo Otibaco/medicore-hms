@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 
-type BadgeVariant = "teal" | "gold" | "red" | "purple" | "blue" | "gray" | "green";
+type BadgeVariant = "teal" | "gold" | "red" | "purple" | "blue" | "gray" | "green"|"rose";
 
 interface BadgeProps {
   children: React.ReactNode;
@@ -18,6 +18,7 @@ const variants: Record<BadgeVariant, string> = {
   blue: "bg-blue-500/15 text-blue-300 border border-blue-500/30",
   gray: "bg-slate-500/15 text-slate-400 border border-slate-500/30",
   green: "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30",
+  rose: "bg-rose-500/15 text-rose-400 border border-rose-500/20"
 };
 
 const dotColors: Record<BadgeVariant, string> = {
@@ -28,6 +29,7 @@ const dotColors: Record<BadgeVariant, string> = {
   blue: "bg-blue-400",
   gray: "bg-slate-400",
   green: "bg-emerald-400",
+  rose: "bg-rose-400"
 };
 
 export function Badge({ children, variant = "teal", dot = false, className }: BadgeProps) {
