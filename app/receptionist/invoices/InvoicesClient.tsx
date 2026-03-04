@@ -108,7 +108,7 @@ export function InvoicesClient({ invoices: initialInvoices, patients, userId, co
                   ))}
                   <Button type="button" variant="ghost" size="sm" onClick={() => setItems(p => [...p, { description: "", quantity: 1, unitPriceNaira: 0 }])} icon={<Plus className="w-3 h-3" />}>Add Item</Button>
                 </div>
-                <div className="flex justify-between items-center p-3 bg-surface-3 rounded-xl border border-border">
+                <div className="flex justify-between items-center p-3 bg-surface-3 rounded-xl border border-[#1e3252]">
                   <span className="text-sm font-medium text-slate-300">Total</span>
                   <span className="font-serif text-xl font-bold text-amber-400">{formatNaira(totalAmt * 100)}</span>
                 </div>
@@ -130,7 +130,7 @@ export function InvoicesClient({ invoices: initialInvoices, patients, userId, co
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-border">
+              <tr className="border-b border-[#1e3252]">
                 {["Invoice ID", "Patient", "Total", "Paid", "Payment", "Created", "Status", "Action"].map(h => (
                   <th key={h} className="text-left text-xs text-slate-600 pb-3 pr-4 font-semibold uppercase tracking-wider">{h}</th>
                 ))}

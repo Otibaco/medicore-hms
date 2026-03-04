@@ -165,7 +165,7 @@ export function NurseDashboardClient({ greeting, today, firstName, stats, curren
                     <AnimatePresence>
                       {showTests && (
                         <motion.div initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -5 }}
-                          className="mt-1 glass-card border border-border rounded-xl p-2 max-h-48 overflow-y-auto space-y-1 z-10">
+                          className="mt-1 glass-card border border-[#1e3252] rounded-xl p-2 max-h-48 overflow-y-auto space-y-1 z-10">
                           {LAB_TESTS.map((test) => (
                             <label key={test} className="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-3 cursor-pointer transition-colors">
                               <input type="checkbox" checked={selectedTests.includes(test)} onChange={() => toggleTest(test)} className="w-4 h-4 rounded border-border accent-teal-500" />
@@ -211,11 +211,11 @@ export function NurseDashboardClient({ greeting, today, firstName, stats, curren
             <div className="space-y-3 max-h-[500px] overflow-y-auto pr-1">
               {currentAdmissions.map((adm, i) => (
                 <motion.div key={adm._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}
-                  className="p-4 rounded-xl bg-surface-2 border border-border hover:border-teal-500/20 transition-all cursor-pointer"
+                  className="p-4 rounded-xl bg-surface-2 border border-[#1e3252] hover:border-teal-500/20 transition-all cursor-pointer"
                   onClick={() => { setPatientIdInput(adm.patient.patientId); toast.info("Patient ID loaded", { description: "Click Fetch to load." }); }}>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-xl bg-surface-3 flex items-center justify-center text-xs font-bold text-teal-400 border border-border">
+                      <div className="w-9 h-9 rounded-xl bg-surface-3 flex items-center justify-center text-xs font-bold text-teal-400 border border-[#1e3252]">
                         {adm.patient.firstName[0]}{adm.patient.lastName[0]}
                       </div>
                       <div>

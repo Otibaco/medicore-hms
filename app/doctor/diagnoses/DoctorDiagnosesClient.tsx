@@ -100,7 +100,7 @@ export function DoctorDiagnosesClient({ diagnoses: initial, patients }: { diagno
               <AnimatePresence>
                 {expandedId === dx._id && (
                   <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
-                    <div className="mt-4 pt-4 border-t border-border space-y-3">
+                    <div className="mt-4 pt-4 border-t border-[#1e3252] space-y-3">
                       <div>
                         <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold mb-1">Clinical Notes</p>
                         <p className="text-sm text-slate-300 leading-relaxed">{dx.clinicalNotes}</p>

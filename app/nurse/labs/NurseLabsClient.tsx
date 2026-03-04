@@ -87,7 +87,7 @@ export function NurseLabsClient({ labRequests: initial, patients, userId }: { la
                 </div>
               ) : filtered.map((req, i) => (
                 <motion.div key={req._id} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.04 }}
-                  className="p-4 rounded-xl bg-surface-2 border border-border hover:border-teal-500/20 transition-all">
+                  className="p-4 rounded-xl bg-surface-2 border border-[#1e3252] hover:border-teal-500/20 transition-all">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
                       <span className="font-mono text-xs text-violet-400">{req.labId}</span>

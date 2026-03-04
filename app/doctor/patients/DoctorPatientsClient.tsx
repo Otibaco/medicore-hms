@@ -63,10 +63,10 @@ export function DoctorPatientsClient({ patients, doctorId }: { patients: Patient
               return (
                 <motion.button key={p._id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.03 }}
                   onClick={() => { setSelected(p); setActiveTab("vitals"); }}
-                  className={`w-full text-left p-3 rounded-xl border transition-all ${isSel ? "bg-teal-500/10 border-teal-500/40" : "bg-surface-2 border-border hover:border-teal-500/20"}`}>
+                  className={`w-full text-left p-3 rounded-xl border transition-all ${isSel ? "bg-teal-500/10 border-teal-500/40" : "bg-surface-2 border-[#1e3252] hover:border-teal-500/20"}`}>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-[10px] font-bold border ${isSel ? "bg-teal-500/20 border-teal-500/30 text-teal-300" : "bg-surface-3 border-border text-slate-400"}`}>{p.firstName[0]}{p.lastName[0]}</div>
+                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-[10px] font-bold border ${isSel ? "bg-teal-500/20 border-teal-500/30 text-teal-300" : "bg-surface-3 border-[#1e3252] text-slate-400"}`}>{p.firstName[0]}{p.lastName[0]}</div>
                       <div>
                         <p className={`text-sm font-medium ${isSel ? "text-teal-300" : "text-slate-200"}`}>{p.firstName} {p.lastName}</p>
                         <p className="text-[10px] font-mono text-teal-400">{p.patientId}</p>
@@ -111,7 +111,7 @@ export function DoctorPatientsClient({ patients, doctorId }: { patients: Patient
                 <Card>
                   <div className="flex gap-1 p-1 bg-surface-3 rounded-xl mb-5">
                     {tabs.map(t => (
-                      <button key={t.id} onClick={() => setActiveTab(t.id)} className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === t.id ? "bg-surface text-teal-300 border border-border" : "text-slate-500 hover:text-slate-300"}`}>{t.icon}{t.label}</button>
+                      <button key={t.id} onClick={() => setActiveTab(t.id)} className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === t.id ? "bg-surface text-teal-300 border border-[#1e3252]" : "text-slate-500 hover:text-slate-300"}`}>{t.icon}{t.label}</button>
                     ))}
                   </div>
                   {activeTab === "vitals" && (

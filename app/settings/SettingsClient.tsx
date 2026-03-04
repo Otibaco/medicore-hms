@@ -91,7 +91,7 @@ export function SettingsClient({ currentUser, settings, userRole }: Props) {
           className={cn(
             "flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2.5 rounded-lg text-[11px] sm:text-sm font-medium transition-all shrink-0", 
             isActive 
-              ? "bg-surface-2 text-slate-200 border border-border shadow-sm" 
+              ? "bg-surface-2 text-slate-200 border border-[#1e3252] shadow-sm" 
               : "text-slate-500 hover:text-slate-300"
           )}
         >

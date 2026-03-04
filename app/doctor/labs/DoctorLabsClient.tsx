@@ -131,7 +131,7 @@ export function DoctorLabsClient({ labRequests: initial, stats, doctorId }: Prop
                     "w-full text-left p-3.5 rounded-xl border transition-all duration-200",
                     isSelected
                       ? "bg-teal-500/10 border-teal-500/40"
-                      : "bg-surface-2 border-border hover:border-teal-500/20"
+                      : "bg-surface-2 border-[#1e3252] hover:border-teal-500/20"
                   )}
                 >
                   <div className="flex items-start justify-between gap-2 mb-2">
@@ -162,7 +162,7 @@ export function DoctorLabsClient({ labRequests: initial, stats, doctorId }: Prop
             {!selected ? (
               <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 <Card className="flex flex-col items-center justify-center py-24 text-center">
-                  <div className="w-16 h-16 rounded-2xl bg-surface-3 border border-border flex items-center justify-center mb-4">
+                  <div className="w-16 h-16 rounded-2xl bg-surface-3 border border-[#1e3252] flex items-center justify-center mb-4">
                     <FlaskConical className="w-8 h-8 text-slate-600" />
                   </div>
                   <p className="text-slate-400 font-medium">No result selected</p>

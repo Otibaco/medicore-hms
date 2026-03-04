@@ -77,7 +77,7 @@ export function ReceptionistPatientsClient({ patients: initial, userId }: { pati
               <Select label="Blood Group" name="bloodGroup" options={[{value:"",label:"Select"}, ...BLOOD_GROUPS.map(g=>({value:g,label:g}))]} />
               <Select label="Genotype" name="genotype" options={[{value:"",label:"Select"}, ...GENOTYPES.map(g=>({value:g,label:g}))]} />
             </div>
-            <div className="border-t border-border pt-3">
+            <div className="border-t border-[#1e3252] pt-3">
               <p className="text-xs text-slate-500 uppercase font-semibold mb-3">Emergency Contact</p>
               <div className="grid grid-cols-2 gap-3">
                 <Input label="Name *" name="emergencyContactName" required />
@@ -101,9 +101,9 @@ export function ReceptionistPatientsClient({ patients: initial, userId }: { pati
               <div className="text-center py-10"><Users className="w-10 h-10 mx-auto text-slate-700 mb-2" /><p className="text-slate-500 text-sm">No patients found</p></div>
             ) : filtered.map((p, i) => (
               <motion.div key={p._id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.02 }}
-                className="flex items-center justify-between p-3 rounded-xl bg-surface-2 border border-border hover:border-teal-500/20 transition-all">
+                className="flex items-center justify-between p-3 rounded-xl bg-surface-2 border border-[#1e3252] hover:border-teal-500/20 transition-all">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-surface-3 border border-border flex items-center justify-center text-[10px] font-bold text-slate-400">{p.firstName[0]}{p.lastName[0]}</div>
+                  <div className="w-8 h-8 rounded-lg bg-surface-3 border border-[#1e3252] flex items-center justify-center text-[10px] font-bold text-slate-400">{p.firstName[0]}{p.lastName[0]}</div>
                   <div>
                     <p className="text-sm font-medium text-slate-200">{p.firstName} {p.lastName}</p>
                     <p className="text-[10px] font-mono text-teal-400">{p.patientId} · {p.dob ? `Age ${calculateAge(p.dob)}` : ""}</p>

@@ -78,13 +78,13 @@ export function DoctorVitalsClient({ recentVitals, patients, userId }: { recentV
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-border">
+                    <tr className="border-b border-[#1e3252]">
                       {["Patient", "BP", "Pulse", "Temp", "SpO2", "By", "Time"].map(h => (
                         <th key={h} className="text-left text-xs text-slate-600 pb-3 pr-4 font-semibold uppercase tracking-wider">{h}</th>
                       ))}
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-border/50">
+                  <tbody className="divide-y divide-[#1e3252]/50">
                     {recentVitals.map((v, i) => (
                       <motion.tr key={v._id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.02 }} className="hover:bg-surface-2/50">
                         <td className="py-3 pr-4">

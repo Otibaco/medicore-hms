@@ -121,7 +121,7 @@ export function NurseAdmissionsClient({ admissions: initial, doctors, stats, nur
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 p-1 bg-surface rounded-xl border border-border w-fit mb-6">
+      <div className="flex gap-1 p-1 bg-surface rounded-xl border border-[#1e3252] w-fit mb-6">
         {[{ id: "admit" as const, label: "New Admission", icon: <Plus className="w-4 h-4" /> },
           { id: "list" as const, label: "All Admissions", icon: <BedDouble className="w-4 h-4" /> }].map(tab => (
           <button key={tab.id} onClick={() => setActiveTab(tab.id)}
@@ -188,7 +188,7 @@ export function NurseAdmissionsClient({ admissions: initial, doctors, stats, nur
                           <ChevronDown className={`w-4 h-4 text-slate-500 transition-transform ${showTests ? "rotate-180" : ""}`} />
                         </button>
                         {showTests && (
-                          <div className="mt-1 glass-card border border-border rounded-xl p-2 max-h-48 overflow-y-auto space-y-1">
+                          <div className="mt-1 glass-card border border-[#1e3252] rounded-xl p-2 max-h-48 overflow-y-auto space-y-1">
                             {LAB_TESTS.map(test => (
                               <label key={test} className="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-3 cursor-pointer">
                                 <input type="checkbox" checked={selectedTests.includes(test)} onChange={() => setSelectedTests(p => p.includes(test) ? p.filter(t => t !== test) : [...p, test])}
@@ -234,10 +234,10 @@ export function NurseAdmissionsClient({ admissions: initial, doctors, stats, nur
                   </div>
                 ) : filtered.map((adm, i) => (
                   <motion.div key={adm._id} initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.04 }}
-                    className="p-4 rounded-xl bg-surface-2 border border-border hover:border-violet-500/20 transition-all">
+                    className="p-4 rounded-xl bg-surface-2 border border-[#1e3252] hover:border-violet-500/20 transition-all">
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-surface-3 border border-border flex items-center justify-center text-xs font-bold text-violet-400">
+                        <div className="w-10 h-10 rounded-xl bg-surface-3 border border-[#1e3252] flex items-center justify-center text-xs font-bold text-violet-400">
                           {adm.patient?.firstName[0]}{adm.patient?.lastName[0]}
                         </div>
                         <div>

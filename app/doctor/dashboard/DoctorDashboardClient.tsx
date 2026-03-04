@@ -134,12 +134,12 @@ export function DoctorDashboardClient({ greeting, today, firstName, doctorId, st
                   <motion.button key={admission._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.06 }}
                     onClick={() => { setSelectedAdmission(admission); setActiveTab("vitals"); }}
                     className={`w-full text-left p-3 rounded-xl border transition-all duration-200 ${
-                      isSelected ? "bg-teal-500/10 border-teal-500/40" : "bg-surface-2 border-border hover:border-teal-500/20"
+                      isSelected ? "bg-teal-500/10 border-teal-500/40" : "bg-surface-2 border-[#1e3252] hover:border-teal-500/20"
                     }`}>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className={`w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold border ${
-                          isSelected ? "bg-teal-500/20 border-teal-500/30 text-teal-300" : "bg-surface-3 border-border text-slate-400"
+                          isSelected ? "bg-teal-500/20 border-teal-500/30 text-teal-300" : "bg-surface-3 border-[#1e3252] text-slate-400"
                         }`}>
                           {patient.firstName[0]}{patient.lastName[0]}
                         </div>
@@ -171,7 +171,7 @@ export function DoctorDashboardClient({ greeting, today, firstName, doctorId, st
             {!selectedAdmission ? (
               <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 <Card className="flex flex-col items-center justify-center text-center py-24">
-                  <div className="w-16 h-16 rounded-2xl bg-surface-3 border border-border flex items-center justify-center mb-4">
+                  <div className="w-16 h-16 rounded-2xl bg-surface-3 border border-[#1e3252] flex items-center justify-center mb-4">
                     <Stethoscope className="w-8 h-8 text-slate-600" />
                   </div>
                   <p className="text-slate-400 font-medium mb-2">No patient selected</p>
@@ -222,7 +222,7 @@ export function DoctorDashboardClient({ greeting, today, firstName, doctorId, st
                     {tabs.map((tab) => (
                       <button key={tab.id} onClick={() => setActiveTab(tab.id)}
                         className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${
-                          activeTab === tab.id ? "bg-surface text-teal-300 border border-border shadow-sm" : "text-slate-500 hover:text-slate-300"
+                          activeTab === tab.id ? "bg-surface text-teal-300 border border-[#1e3252] shadow-sm" : "text-slate-500 hover:text-slate-300"
                         }`}>
                         {tab.icon} {tab.label}
                       </button>
@@ -275,7 +275,7 @@ export function DoctorDashboardClient({ greeting, today, firstName, doctorId, st
 
 function BedEmpty() {
   return (
-    <div className="w-16 h-16 rounded-2xl bg-surface-3 border border-border flex items-center justify-center mx-auto">
+    <div className="w-16 h-16 rounded-2xl bg-surface-3 border border-[#1e3252] flex items-center justify-center mx-auto">
       <Stethoscope className="w-8 h-8 text-slate-600" />
     </div>
   );

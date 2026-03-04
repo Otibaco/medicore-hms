@@ -104,7 +104,7 @@ export function NotificationsClient({ initialNotifications }: { initialNotificat
           <div className="mt-4 pt-4 border-t border-[#1e3252]">
             <label className="flex items-center justify-between cursor-pointer">
               <span className="text-sm text-slate-400">Unread only</span>
-              <div className={cn("relative w-10 h-5 rounded-full transition-all cursor-pointer", showUnreadOnly ? "bg-teal-500" : "bg-surface-3 border border-border")} onClick={() => setShowUnreadOnly(!showUnreadOnly)}>
+              <div className={cn("relative w-10 h-5 rounded-full transition-all cursor-pointer", showUnreadOnly ? "bg-teal-500" : "bg-surface-3 border border-[#1e3252]")} onClick={() => setShowUnreadOnly(!showUnreadOnly)}>
                 <div className={cn("absolute top-0.5 w-4 h-4 rounded-full bg-white transition-all", showUnreadOnly ? "left-5" : "left-0.5")} />
               </div>
             </label>

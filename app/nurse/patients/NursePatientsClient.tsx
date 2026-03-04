@@ -47,7 +47,7 @@ export function NursePatientsClient({ patients }: { patients: Patient[] }) {
                   className={`w-full text-left p-3 rounded-xl border transition-all ${selected?._id === p._id ? "bg-teal-500/10 border-teal-500/40" : "bg-surface-2 border-border hover:border-teal-500/20"}`}>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-lg bg-surface-3 border border-border flex items-center justify-center text-[10px] font-bold text-slate-400">{p.firstName[0]}{p.lastName[0]}</div>
+                      <div className="w-7 h-7 rounded-lg bg-surface-3 border border-[#1e3252] flex items-center justify-center text-[10px] font-bold text-slate-400">{p.firstName[0]}{p.lastName[0]}</div>
                       <div>
                         <p className="text-sm font-medium text-slate-200">{p.firstName} {p.lastName}</p>
                         <p className="text-[10px] font-mono text-teal-400">{p.patientId}</p>
@@ -73,7 +73,7 @@ export function NursePatientsClient({ patients }: { patients: Patient[] }) {
             ) : (
               <motion.div key={selected._id} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
                 <Card>
-                  <div className="flex items-start justify-between mb-5 pb-5 border-b border-border">
+                  <div className="flex items-start justify-between mb-5 pb-5 border-b border-[#1e3252]">
                     <div className="flex items-center gap-4">
                       <div className="w-14 h-14 rounded-2xl bg-teal-500/15 border border-teal-500/20 flex items-center justify-center text-lg font-bold text-teal-300">
                         {selected.firstName[0]}{selected.lastName[0]}
@@ -96,7 +96,7 @@ export function NursePatientsClient({ patients }: { patients: Patient[] }) {
                       <div className="col-span-2"><p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Allergies</p><p className="text-slate-300 text-xs">{selected.allergies.join(", ")}</p></div>
                     )}
                     {selected.emergencyContact && (
-                      <div className="col-span-2 pt-3 border-t border-border">
+                      <div className="col-span-2 pt-3 border-t border-[#1e3252]">
                         <p className="text-xs text-slate-500 uppercase tracking-wider mb-2">Emergency Contact</p>
                         <p className="text-slate-200 text-sm">{selected.emergencyContact.name} <span className="text-slate-500">({selected.emergencyContact.relationship})</span></p>
                         <p className="text-slate-400 text-xs mt-1">{selected.emergencyContact.phone}</p>

@@ -131,7 +131,7 @@ export function ReceptionistDashboardClient({ greeting, today, firstName, userId
               <Select label="Blood Group" name="bloodGroup" options={[{ value: "", label: "Select" }, ...BLOOD_GROUPS.map(g => ({ value: g, label: g }))]} />
               <Select label="Genotype" name="genotype" options={[{ value: "", label: "Select" }, ...GENOTYPES.map(g => ({ value: g, label: g }))]} />
             </div>
-            <div className="border-t border-border pt-4">
+            <div className="border-t border-[#1e3252] pt-4">
               <p className="text-xs text-slate-500 uppercase tracking-wider font-semibold mb-3">Emergency Contact</p>
               <div className="grid grid-cols-2 gap-3">
                 <Input label="Name *" name="emergencyContactName" placeholder="Contact name" required />
@@ -162,11 +162,11 @@ export function ReceptionistDashboardClient({ greeting, today, firstName, userId
                     <span className="font-semibold text-teal-300 text-sm">Patient Registered Successfully</span>
                   </div>
                   <div className="space-y-2">
-                    <div className="flex justify-between py-2 border-b border-border">
+                    <div className="flex justify-between py-2 border-b border-[#1e3252]">
                       <span className="text-xs text-slate-500 flex items-center gap-1.5"><Hash className="w-3 h-3" /> Patient ID</span>
                       <span className="font-mono text-teal-400 font-bold">{newPatientPreview.patientId}</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-border">
+                    <div className="flex justify-between py-2 border-b border-[#1e3252]">
                       <span className="text-xs text-slate-500">Full Name</span>
                       <span className="text-slate-200 font-medium">{newPatientPreview.fullName}</span>
                     </div>
@@ -199,9 +199,9 @@ export function ReceptionistDashboardClient({ greeting, today, firstName, userId
               <div className="space-y-2">
                 {recentPatients.map((p, i) => (
                   <motion.div key={p._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.06 }}
-                    className="flex items-center justify-between p-3 rounded-xl bg-surface-2 border border-border hover:border-teal-500/20 transition-all">
+                    className="flex items-center justify-between p-3 rounded-xl bg-surface-2 border border-[#1e3252] hover:border-teal-500/20 transition-all">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-surface-3 border border-border flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-lg bg-surface-3 border border-[#1e3252] flex items-center justify-center">
                         <span className="font-mono text-[10px] text-teal-400 font-bold">{p.patientId}</span>
                       </div>
                       <div>
@@ -230,10 +230,10 @@ export function ReceptionistDashboardClient({ greeting, today, firstName, userId
               <div className="space-y-2">
                 {recentInvoices.map((inv, i) => (
                   <motion.div key={inv._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.06 }}
-                    className="flex items-center justify-between p-3 rounded-xl bg-surface-2 border border-border hover:border-amber-500/20 transition-all cursor-pointer"
+                    className="flex items-center justify-between p-3 rounded-xl bg-surface-2 border border-[#1e3252] hover:border-amber-500/20 transition-all cursor-pointer"
                     onClick={() => toast.info(`Invoice ${inv.invoiceId}`, { description: `Total: ${formatNaira(inv.totalKobo)} · Paid: ${formatNaira(inv.amountPaidKobo)}` })}>
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-surface-3 border border-border flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-lg bg-surface-3 border border-[#1e3252] flex items-center justify-center">
                         <span className="text-[9px] text-amber-400 font-mono font-bold truncate px-1">{inv.invoiceId}</span>
                       </div>
                       <div>
